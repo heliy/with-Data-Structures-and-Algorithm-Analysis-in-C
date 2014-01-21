@@ -34,7 +34,7 @@ void sselect(int *se,int *re,int k,int n)
   for(i=0;i<k;i++){                 /*读入前k个*/
     re[i]=se[i];
   }
-  re[i]='\r';
+  re[i]='\0';
 
   sort(re,k);                         /*前k个排序*/
   int min=re[k-1];                  /*降序排序后最后一数最小*/
@@ -93,5 +93,5 @@ void seq(int *p,int n)
   for(i=0;i<n;i++){
     *(p+i)=rand();
   }
-  *(p+i)='\r';
+  *(p+i)='\0';
 }
