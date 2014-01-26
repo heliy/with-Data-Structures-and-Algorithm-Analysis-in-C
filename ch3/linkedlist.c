@@ -1,3 +1,5 @@
+#include"linkedlist.h"
+
 typedef struct node *node_ptr;
 
 struct node
@@ -7,14 +9,14 @@ struct node
 };
 
 typedef node_ptr LIST;
-typedef node_ptr postion;
+typedef node_ptr position;
 
 int is_empty(LIST L)
 {
   return(L->next==NULL);
 }
 
-int is_last(postion p,LIST L)
+int is_last(position p,LIST L)
 {
   /* postion last; */
   /* for(last=L->next;last->next!=NULL;last=last->next) */
@@ -23,19 +25,26 @@ int is_last(postion p,LIST L)
   return(p->next==NULL);
 }
 
-postion find(element_type x,LIST L)
+position find(element_type x,LIST L)
 {
-  postion loc;
+  position loc;
   for(loc=L->next;loc!=NULL&&loc->element!=x;loc=loc->next)
     ;
   return loc;
 }
 
-void delete(element_type x,LIST L)
+void find_prev(element_type x,LIST L)
 {
-  postion pre,tmp;
+  position pre;
   for(pre=L->next;pre->next!=NULL&&pre->next->element!=x;pre=pre->next)
     ;
+  return pre;
+}
+
+void delete(element_type x,LIST L)
+{
+  position pre=find_prev(x,L);
+  position tmp;
   if(pre->next!=NULL){
     tmp=pre->next;
     pre->next=tmp->next;
@@ -43,9 +52,9 @@ void delete(element_type x,LIST L)
   }
 }
 
-void insert(element_type x,LIST L,postion p)
+void insert(element_type x,LIST L,position p)
 {
-  postion tmp=(postion) malloc(sizeof(struct node));
+  position tmp=(position) malloc(sizeof(struct node));
   if(tmp==NULL){
     printf("No space!\n")
       exit(-1);
