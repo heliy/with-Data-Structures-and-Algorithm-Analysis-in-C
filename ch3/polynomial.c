@@ -12,7 +12,7 @@ void zero_polynomial(POLYNOMIAL poly)
   poly->high_power=0;
 }
 
-void add_polynoimal(POLYNOMIAL poly1,POLYNOMIAL poly2,POLYNOMIAL poly_sum)
+void add_polynomial(POLYNOMIAL poly1,POLYNOMIAL poly2,POLYNOMIAL poly_sum)
 {
   int i;
   zero_polynomial(poly_sum);
