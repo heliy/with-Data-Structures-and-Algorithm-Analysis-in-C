@@ -1,3 +1,5 @@
+#include<stdlib.h>
+
 typedef node * node_ptr;
 struct node{
   int ele;
