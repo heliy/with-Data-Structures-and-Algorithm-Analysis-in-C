@@ -65,19 +65,18 @@ tree_ptr insert(element_type x,SEARCH_TREE T)
   return T;
 }
 
-element_type delete_min(SEARCH_TREE T)
+element_type delete_min(SEARCH_TREE T,tree_ptr father)
 {
   element_type i;
   if(T==NULL)
     return NULL;
   if(T->left==NULL){
     i=T->element;
-    SEARCH_TREE tmp=T;
-    T=NULL;
-    free(tmp);
+    father->left=T->right;
+    free(T);
     return i;
   }else
-    return(delete_min(T->left));
+    return(delete_min(T->left,T));
 }
 
 tree_ptr delete(element_type x,SEARCH_TREE T)
@@ -92,7 +91,7 @@ tree_ptr delete(element_type x,SEARCH_TREE T)
   else if(x>T->element)
     return delete(x,T->right);
 
-  element_type rightmin=delete_min(T->right);
+  element_type rightmin=delete_min(T->right,T);
   if(rightmin==NULL){
     tmp=T;
     T=T->left;
@@ -101,4 +100,42 @@ tree_ptr delete(element_type x,SEARCH_TREE T)
     T->element=rightmin;
   }
   return T;
+}
+
+/* 4.13 
+   基本上。。。。*/
+
+element_type delete_max(SEARCH_TREE T,tree_ptr father)
+{
+  element_type i;
+  if(T==NULL)
+    return NULL;
+  if(T->right==NULL){
+    i=T->element;
+    father->right=T->left;
+    free(T);
+    return i;
+  }else
+    return(delete_max(T->left,T));
+
+}
+
+tree_ptr delete_left(SEARCH_TREE T)
+{
+  if(T==NULL)
+    return NULL;
+  if(x<T->element)
+    return delete_left(x,T->left);
+  if(x>T->element)
+    return delete_left(x,T->right);
+
+  element_type leftmax=delete_max(T->left,T);
+  if(leftmax==NULL){
+    tree_ptr tmp=T;
+    T=T->right;
+    free(tmp);
+  }else{
+    T->element=leftmax;
+  }
+  reutrn T;
 }
