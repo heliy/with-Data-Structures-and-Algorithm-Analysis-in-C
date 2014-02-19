@@ -139,3 +139,4 @@ tree_ptr delete_left(SEARCH_TREE T)
   }
   reutrn T;
 }
+
