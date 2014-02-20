@@ -309,3 +309,57 @@ void d_rotate_left_nons(avl_ptr k3)
   k2->right=k1;
   k1->left=C;
 }
+
+/* 4.30 & 4.31*/
+
+SEARCT_TREE create_max(int h,tree_ptr father,int flag)
+{
+  if(h==-1)
+    return NULL;
+  tree_ptr p;
+  if(father==NULL){
+    father=node_init(2^(h)+1);
+    p=father;
+  }else{
+    if(flag<0){
+      p=node_init(father->element-(2^(h)-1));
+      father->left=p;
+    }else{
+      p=node_init(father->element+(2^(h)-1)+2);
+      father->right=p;
+    }
+  }
+  p->left=create_max(h-1,p,-1);
+  p->right=create_max(h-1,p,1);
+  p->height=h;
+  return p;
+}
+
+SEARCH_TREE delete_left_min(SEARCH_TREE T)
+{
+  tree_ptr p,tmp;
+  for(p=T;p->left->left!=NULL;p=p->left)
+    ;
+  tmp=p->left;
+  p->left=NULL;
+  free(tmp);
+return T
+}
+
+SEARCH_TREE max2avl(SEARCH_TREE T)
+{
+  if(T->left!=NULL)
+    T->left=max2val(T->left);
+  if(T->right!=NULL)
+    T->right=max2val(T->right);
+  if(T->left==NULL&&T->right==NULL)
+    return T;
+  else
+    return delete_left_min(T);
+}
+
+SEARCH_TREE create_avl_min(int h)
+{
+  tree_ptr t=create_max(h,NULL,0);
+  t=max2avl(t);
+}

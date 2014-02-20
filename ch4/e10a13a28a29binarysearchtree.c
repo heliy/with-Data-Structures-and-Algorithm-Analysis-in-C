@@ -1,5 +1,7 @@
 #include<stdlib.h>
 
+typedef int element_type;
+
 typedef struct tree_node *tree_ptr;
 
 struct tree_node{
@@ -138,5 +140,72 @@ tree_ptr delete_left(SEARCH_TREE T)
     T->element=leftmax;
   }
   reutrn T;
+}
+
+/* 4.28 
+   only a pointer to T?
+   O(n)*/
+
+int count_nodes(SEARCH_TREE T)
+{
+  if(T==NULL)
+    return 0;
+  if(T->left!=NULL||T->right!=NULL)
+    return(1+count_node(T->left)+count_node(T->right));
+  else
+    return 0;
+}
+
+int count_leaves(SEARCH_TREE T)
+{
+  if(T=NULL)
+    return 0;
+  if(T->left==NULL&&T->right==NULL)
+    return 1;
+  else
+    return(count_leaves(T->left)+count_leaves(T->right));
+}
+
+int count_full(SEARCH_TREE T)
+{
+  if(T==NULL)
+    return 0;
+  else
+    return(count_full(T->left)+count_full(T->right)+1);
+}
+
+/* 4.29
+   O(n)*/
+
+tree_ptr create_node(element_type x){
+  tree_ptr p;
+
+  p=(SEARCH_TREE) malloc(sizeof(struct tree_node));
+  if(p==NULL){
+    printf("NO space\n");
+    exit(-1);
+  }else{
+    p->element=n;
+    p->left=p->right=NULL;
+  }
+
+  return p;  
+}
+
+SEARCH_TREE create_n_recu(int n)
+{
+  tree_ptr T=NULL,R,p;
+  int i;
+  for(i=1;i<=n;i++){
+    p=create_node((element_type) i);
+
+    if(T==NULL){
+      R=p;
+    }else{
+      T->right=p;
+    }
+    T=p;
+  }
+  return R;
 }
 
