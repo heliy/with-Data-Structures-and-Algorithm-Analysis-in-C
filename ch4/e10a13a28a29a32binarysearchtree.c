@@ -209,3 +209,20 @@ SEARCH_TREE create_n_recu(int n)
   return R;
 }
 
+/* 4.32 */
+
+void print_elements(SEARCH_TREE T,element_type k1,element_type k2)
+{
+  if(T==NULL)
+    return;
+  if(T->element<k1)
+    print_elements(T->right,k1,k2);
+  else if(T->element>k2)
+    print_elements(T->left,k1,k2);
+  else{
+    print_elements(T->left,k1,k2);
+    print(T->element);
+    print_elements(T->right,k1,k2);
+  }
+}
+
