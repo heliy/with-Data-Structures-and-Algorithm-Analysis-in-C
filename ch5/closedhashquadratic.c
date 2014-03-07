@@ -1,7 +1,7 @@
 enum kind_of_entry{legitimate,empty,deleted}; //<-三种？？
 struct hash_entry{
   element_type element;
-  enum kind_of_enty info;
+  enum kind_of_entry info;
 };
 
 typedef unsigned int INDEX;
