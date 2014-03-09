@@ -11,5 +11,9 @@
   e44,e45,e46
 
 ## ch5
-  
+  e12
+  e13-15,extendible_hashing
+
+## ch6
+
 
