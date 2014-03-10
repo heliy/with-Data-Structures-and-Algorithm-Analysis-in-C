@@ -2,6 +2,7 @@ typedef int element_type;
 typedef unsigned int position;
 
 struct heap_struct{
+  unsigned int size;
   unsigned int max_heap_size;
   element_type *elements;
 };
@@ -129,5 +130,8 @@ element_type delete(position pos,PRIORITY_QUEUE H)
 
 void build_heap(PRIORITY_QUEUE H)
 {
-
+  position i;
+  for(i=H->size/2;i>0;i--){
+    increase_key(i,0,H);
+  }
 }
