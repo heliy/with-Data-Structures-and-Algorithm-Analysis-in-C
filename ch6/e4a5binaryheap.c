@@ -135,3 +135,25 @@ void build_heap(PRIORITY_QUEUE H)
     increase_key(i,0,H);
   }
 }
+
+/* 6.4 */
+void precolate_down(position i,PRIORITY_QUEUE H)
+{
+  increase_key(i,0,H);
+}
+
+void precolat_up(position i,PRIORITY_QUEUE H)
+{
+  decrease_key(i,0,H);
+}
+
+/* 6.5 */
+element_type find_min(PRIORITY_QUEUE H)
+{
+  if(is_empty(H))
+    return NULL;
+  else
+    return H->elements[0];
+}
+
+
