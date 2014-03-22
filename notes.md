@@ -15,4 +15,5 @@
   e13-15,extendible_hashing
 
 ## ch6
-
+  e10-12
+  
