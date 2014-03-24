@@ -1,3 +1,8 @@
+/*  selection problem
+    可运行
+    算法是第二种
+ */
+
 #include<stdio.h>
 #include<stdlib.h>
 

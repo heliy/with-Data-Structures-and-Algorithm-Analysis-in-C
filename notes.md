@@ -16,4 +16,5 @@
 
 ## ch6
   e10-12
+  e19-22,leftist_heap
   

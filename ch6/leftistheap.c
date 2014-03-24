@@ -58,4 +58,4 @@ PRIORITY_QUEUE delete_min1(PRIORITY_QUEUE H)
   return merge(left_heap,right_heap);
 }
 
-
+/* 6.21 */
