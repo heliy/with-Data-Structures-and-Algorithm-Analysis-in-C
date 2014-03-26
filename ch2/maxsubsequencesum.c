@@ -36,7 +36,7 @@ int max_sub_sum(int *a,int left,int right)
 
   /* 包含后半部分第一个数值的最大和 */
   int max_right_border_sum=0,right_border_sum=0;
-  for(i=center+1;i>=right;i++){
+  for(i=center+1;i<=right;i++){
     right_border_sum+=a[i];
     if(right_border_sum>max_right_border_sum)
       max_right_border_sum=right_border_sum;

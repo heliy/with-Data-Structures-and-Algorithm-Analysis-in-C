@@ -16,6 +16,7 @@ int main()
   }else{
     printf("No positive number in this sequence\n");
   }
+  return 0;
 }
 
 int minpossum(int *a,int n)
